@@ -45,7 +45,7 @@ abstract class AppDatabase : RoomDatabase() {
                     "tbsm_afgo_database"
                 )
                     .addCallback(DatabaseCallback())
-                    .fallbackToDestructiveMigration()
+                    .fallbackToDestructiveMigration(dropAllTables = true)
                     .build()
                 INSTANCE = instance
                 instance

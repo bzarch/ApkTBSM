@@ -8,6 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.MenuBook
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -162,7 +163,7 @@ fun TbsmBottomNavigationBar(
         NavigationItem("HOME", "Home", Icons.Default.Home),
         NavigationItem("TOOLS", "Tools", Icons.Default.Build),
         NavigationItem("DIAGNOSIS", "Diagnosis", Icons.Default.Warning),
-        NavigationItem("BELAJAR", "Belajar", Icons.Default.MenuBook),
+        NavigationItem("BELAJAR", "Belajar", Icons.AutoMirrored.Filled.MenuBook),
         NavigationItem("GARAGE", "Garage", Icons.Default.TwoWheeler)
     )
 

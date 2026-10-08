@@ -12,7 +12,7 @@ object TbsmStaticDatabase {
             workingPrinciple = "Bergerak translasi bolak-balik (naik-turun) dari Titik Mati Bawah (TMB) ke Titik Mati Atas (TMA) dengan toleransi celah dinding silinder yang sangat presisi.",
             location = "Di dalam silinder liner / dinding blok silinder.",
             damageSymptoms = listOf("Knalpot keluar asap putih pedih (oli terbakar)", "Mesin boros oli / volume oli cepat habis", "Kompresi mesin drop dan tarikan loyo", "Suara ketukan logam halus saat gas dibuka"),
-            inspectionMethod = listOf("Ukur celah celah ring piston (ring end gap) dengan feeler gauge di dalam silinder", "Ukur diameter piston pada posisi 10mm dari tepi bawah rok piston menggunakan mikrometer luar", "Periksa keovalan dan ketirusan dinding silinder dengan cylinder bore gauge"),
+            inspectionMethod = listOf("Ukur celah ring piston (ring end gap) dengan feeler gauge di dalam silinder", "Ukur diameter piston pada posisi 10mm dari tepi bawah rok piston menggunakan mikrometer luar", "Periksa keovalan dan ketirusan dinding silinder dengan cylinder bore gauge"),
             maintenanceTips = listOf("Ganti oli mesin secara teratur sesuai jadwal", "Gunakan saringan udara bersih agar debu abrasif tidak mengikis piston", "Hindari menggeber mesin saat baru dinyalakan"),
             k3Warning = "Tunggu mesin dingin sebelum melepas blok silinder. Gunakan kain majun saat melepas pen piston agar kancing sirklipp tidak terpental ke mata.",
             relatedComponents = listOf("Silinder Blok", "Connecting Rod", "Pin Piston", "Ring Kompresi", "Ring Oli")
@@ -100,6 +100,48 @@ object TbsmStaticDatabase {
             maintenanceTips = listOf("Kuras dan ganti minyak rem DOT 3/DOT 4 setiap 2 tahun atau 20.000 km", "Lumasi pin kaliper (sliding pin) dengan grease tahan air"),
             k3Warning = "Minyak rem bersifat korosif terhadap cat bodi motor. Segera bilas dengan air bersih jika minyak rem tumpah ke bodi.",
             relatedComponents = listOf("Piringan Cakram", "Brake Pad", "Selang Rem", "Minyak Rem DOT 4")
+        ),
+        ComponentItem(
+            id = "fuel_injector",
+            name = "Injektor Bahan Bakar",
+            englishName = "Fuel Injector",
+            category = "EFI",
+            functionDesc = "Menyemprotkan bensin bertekanan tinggi menjadi kabut partikel mikro ke intake manifold tepat di belakang katup isap.",
+            workingPrinciple = "Solenoid elektromagnetik membuka needle valve saat ECU menghubungkan sirkuit massa penginjeksian sesuai durasi pulsa (pulse width).",
+            location = "Terpasang pada intake manifold dekat cylinder head.",
+            damageSymptoms = listOf("Mesin brebet parah", "Konsumsi bensin sangat boros atau mesin kekurangan bensin (kurus)", "Emisi gas buang tinggi"),
+            inspectionMethod = listOf("Ukur tahanan kumparan injektor (standar: 11 - 13 Ohm pada 20°C)", "Lakukan tes semprotan (spray pattern) dan uji kebocoran (leakage test) pada alat injector tester"),
+            maintenanceTips = listOf("Gunakan bensin berkualitas dan kuras saringan bensin tangki berkala", "Lakukan pembersihan ultrasonik setiap 15.000 km"),
+            k3Warning = "Bahan bakar bertekanan tinggi mudah terbakar. Jauhkan dari sumber api dan gunakan kacamata saat menguji semprotan injektor.",
+            relatedComponents = listOf("Fuel Pump", "Fuel Filter", "ECU", "Intake Manifold")
+        ),
+        ComponentItem(
+            id = "stator_spool",
+            name = "Spul Magnet / Stator Generator",
+            englishName = "Stator Coil / Alternator",
+            category = "Kelistrikan",
+            functionDesc = "Membangkitkan daya listrik arus bolak-balik (AC) untuk pengisian aki dan sistem pengapian motor.",
+            workingPrinciple = "Induksi elektromagnetik Faraday saat magnet rotor berputar mengelilingi kumparan kawat tembaga stator.",
+            location = "Di dalam bak magnet sebelah kiri mesin basah/kering.",
+            damageSymptoms = listOf("Aki tidak mengisi sama sekali", "Spul gosong/terbakar berbau hangus", "Lampu motor redup total"),
+            inspectionMethod = listOf("Ukur tahanan kumparan pengisian antar fase kuning-kuning (standar: 0.2 - 1.2 Ohm)", "Periksa kebocoran isolasi ke massa bodi (harus tak terhingga / O.L)"),
+            maintenanceTips = listOf("Ganti oli mesin tepat waktu karena pada tipe spul basah, oli berfungsi sebagai pendingin gulungan spul"),
+            k3Warning = "Pastikan oli mesin sudah dikuras sebelum melepas bak magnet tipe basah.",
+            relatedComponents = listOf("Rotor Magnet", "Kiprok Regulator", "Pick Up Coil (Sensor CKP)")
+        ),
+        ComponentItem(
+            id = "radiator_cooling",
+            name = "Radiator & Thermostat Pendingin",
+            englishName = "Radiator & Cooling System",
+            category = "Mesin",
+            functionDesc = "Membuang panas berlebih dari mesin ke udara luar menggunakan sirkulasi cairan radiator coolant.",
+            workingPrinciple = "Water pump memompa coolant melalui mantel silinder. Thermostat membuka katup pada suhu ~80-85°C untuk mengalirkan cairan panas ke kisi-kisi radiator.",
+            location = "Di bagian samping kanan mesin atau depan rangka motor.",
+            damageSymptoms = listOf("Mesin overheat dan lampu indikator suhu menyala merah", "Air radiator cepat habis / mendidih meluap ke tabung reservoir"),
+            inspectionMethod = listOf("Ukur tekanan tutup radiator dengan Radiator Cap Tester (standar ~0.9 - 1.1 bar)", "Periksa apakah kisi-kisi sirip radiator tersumbat lumpur"),
+            maintenanceTips = listOf("Ganti cairan radiator coolant setiap 12.000 km atau 1 tahun", "Gunakan coolant siap pakai (pre-mixed), jangan gunakan air sumur/keran"),
+            k3Warning = "Dilarang keras membuka tutup radiator saat mesin masih dalam kondisi panas mendidih karena uap bertekanan dapat menyembur membakar kulit.",
+            relatedComponents = listOf("Water Pump", "Thermostat", "Kipas Radiator", "Tabung Reservoir")
         )
     )
 
@@ -203,6 +245,34 @@ object TbsmStaticDatabase {
                 "Apa dampak pemakaian roller CVT yang terlalu enteng dibanding standar pabrikan?"
             ),
             safetyNote = "Jangan sekali-kali menyalakan mesin dengan bak CVT terbuka saat mur puli belum dikencangkan dengan torsi yang benar."
+        ),
+        TbsmMaterial(
+            id = "sistem_pengisian_charging",
+            title = "Sistem Pengisian Sepeda Motor (Charging System)",
+            category = "Kelistrikan",
+            summary = "Prinsip konversi energi gerak menjadi energi listrik DC untuk menyuplai seluruh beban kelistrikan dan mengisi ulang daya baterai aki.",
+            fullContent = """
+                Sistem pengisian bertugas memproduksi arus listrik selama mesin menyala. Tanpa sistem pengisian yang sehat, aki akan habis (tekor) dalam hitungan jam.
+                
+                Alur Kerja Pengisian:
+                1. Stator/Spul Magnet: Memproduksi listrik AC 3-fase atau 1-fase seiring putaran poros engkol.
+                2. Kiprok (Regulator Rectifier): Mengubah arus AC menjadi DC (Rectifier) dan membatasi voltase maksimal 14.2V - 14.8V (Regulator).
+                3. Baterai / Aki: Menyimpan daya dan menyaring tegangan ripple.
+                
+                Pemeriksaan Rutin:
+                - Ukur tegangan terminal aki pada 5.000 RPM (harus 13.5V - 14.8V).
+                - Cek kebocoran arus (parasitic current drain) saat kunci kontak OFF (maksimal < 1 mA).
+            """.trimIndent(),
+            keyTerms = listOf(
+                "Rectifier" to "Dioda penyearah gelombang AC menjadi DC",
+                "Cut-off Voltage" to "Tegangan batas pengisian maksimal regulator untuk mencegah aki mendidih / overcharge",
+                "Parasitic Draw" to "Arus listrik yang bocor terus menerus saat kontak mati"
+            ),
+            checkQuestions = listOf(
+                "Apa akibat jika kiprok mengalami kerusakan overcharge (> 15.5V)?",
+                "Bagaimana cara menguji spul magnet yang putus jalurnya?"
+            ),
+            safetyNote = "Pastikan kutub aki tidak terbalik saat pemasangan agar dioda kiprok dan sirkuit ECU tidak jebol seketika."
         )
     )
 
@@ -256,6 +326,24 @@ object TbsmStaticDatabase {
             maintenanceTips = listOf("Matikan switch ke OFF setelah digunakan agar baterai 9V internal tidak habis", "Ganti sekering internal jika pengukuran Ampere overload"),
             commonMistakes = listOf("Mengukur tegangan pada mode Ohm atau Ampere yang menyebabkan sekering multimeter putus seketika", "Memegang ujung besi probe dengan jari saat mengukur hambatan tinggi"),
             safetyRule = "Jangan mengukur tegangan AC tinggi jika isolasi kabel probe terdapat retakan atau sobekan."
+        ),
+        WorkshopTool(
+            id = "compression_tester",
+            name = "Compression Tester",
+            englishName = "Cylinder Pressure Gauge",
+            category = "Diagnostic",
+            functionDesc = "Mengukur tekanan kompresi statis ruang bakar silinder saat diengkol menggunakan motor starter.",
+            howToUse = listOf(
+                "Panaskan mesin hingga suhu kerja, lalu matikan mesin",
+                "Buka seluruh busi silinder",
+                "Pasang adaptor selang compression tester ke lubang ulir busi hingga rapat",
+                "Buka katup gas (throttle) penuh 100%, lalu starter mesin selama 4-5 detik",
+                "Catat jarum tekanan puncak pada manometer"
+            ),
+            howToRead = "Baca nilai jarum penunjuk pada skala bar (kg/cm²) atau psi (standar mesin sehat: 10 - 13 bar / 140 - 185 psi).",
+            maintenanceTips = listOf("Tekan tombol pentil pelepas tekanan setelah pembacaan selesai"),
+            commonMistakes = listOf("Lupa membuka throttle gas penuh sehingga udara yang masuk silinder terhambat dan hasil kompresi terbaca rendah palsu"),
+            safetyRule = "Cop busi harus di-ground-kan agar percikan api tidak menyambar uap bensin dari lubang busi."
         )
     )
 
@@ -299,6 +387,22 @@ object TbsmStaticDatabase {
             options = listOf("Melumasi dengan oli kental", "Mengendurkan setelan torsi ke angka nol / skala terendah", "Mengunci posisi torsi tertinggi", "Mengetuk ujung ratchet dengan palu"),
             correctIndex = 1,
             explanation = "Mengendurkan beban ke posisi nol menjaga pegas kalibrasi internal tidak lelah sehingga akurasi torsi tetap terjamin untuk pemakaian berikutnya."
+        ),
+        QuizQuestion(
+            id = "q6",
+            category = "Bahan Bakar",
+            question = "Berapa standar tekanan bahan bakar (fuel pressure) pompa bensin pada sepeda motor matic Honda PGM-FI?",
+            options = listOf("150 kPa", "200 kPa", "294 kPa (43 psi)", "450 kPa"),
+            correctIndex = 2,
+            explanation = "Tekanan standar fuel pump Honda PGM-FI adalah 294 kPa (43 psi atau 3.0 kgf/cm²). Di bawah nilai ini, mesin akan brebet."
+        ),
+        QuizQuestion(
+            id = "q7",
+            category = "Pengereman",
+            question = "Minyak rem sepeda motor yang paling umum digunakan pada motor modern bertipe:",
+            options = listOf("DOT 1", "DOT 3 atau DOT 4", "Oli SAE 40", "Minyak Hidrolik ISO 68"),
+            correctIndex = 1,
+            explanation = "Sistem pengereman hidrolik sepeda motor umumnya menggunakan standar DOT 3 atau DOT 4 yang memiliki titik didih tinggi."
         )
     )
 
@@ -332,6 +436,12 @@ object TbsmStaticDatabase {
             category = "CVT",
             frontQuestion = "Kapan interval penggantian berkala V-Belt CVT yang direkomendasikan pabrikan?",
             backAnswer = "Pemeriksaan setiap 8.000 km dan penggantian rutin setiap 20.000 - 24.000 km."
+        ),
+        FlashcardItem(
+            id = "fc6",
+            category = "Kelistrikan",
+            frontQuestion = "Berapa tegangan minimal resting voltage aki kering 12V yang sehat?",
+            backAnswer = "Minimal 12.4 Volt DC (Kondisi 100% penuh: 12.8V - 13.0V DC)."
         )
     )
 
@@ -395,6 +505,87 @@ object TbsmStaticDatabase {
                 "Tegangan Pengisian (RPM 3000)" to "13.5V - 14.8V DC"
             ),
             conclusionGuideline = "Tentukan apakah aki membutuhkan charge ulang, sistem pengisian motor bermasalah, atau aki sudah mengalami degradasi sel internal."
+        ),
+        PracticumModule(
+            id = "prak_cvt",
+            title = "Praktikum Servis Berkala & Pembersihan CVT",
+            objectives = listOf(
+                "Mampu membongkar puli primer dan sekunder menggunakan SST treker",
+                "Mampu mengukur keausan v-belt, roller, dan kampas kopling ganda",
+                "Mampu melumasi torque cam dengan grease CVT tahan panas tinggi"
+            ),
+            toolsNeeded = listOf("Kunci T-8", "Kunci Ring 17 & 24", "Universal Holder Treker", "Vernier Caliper", "Timbangan Digital"),
+            materialsNeeded = listOf("Grease CVT High Temp", "Brake / Parts Cleaner", "Kain Majun"),
+            k3Notes = listOf(
+                "Gunakan kacamata pelindung dan masker saat membersihkan debu asbes kampas ganda",
+                "Jangan gunakan bensin murni untuk merendam v-belt"
+            ),
+            preparation = listOf("Standar tengah motor di paddock datar", "Buka filter udara dan cover plastik bak CVT"),
+            procedures = listOf(
+                "Buka baut pengikat bak CVT ukuran 8mm secara menyilang",
+                "Tahan puli kipas depan dengan treker lalu buka mur 22/17mm",
+                "Lepas rumah roller dan amati fisik roller dari keausan peang",
+                "Ukur lebar v-belt dengan jangka sorong",
+                "Bersihkan debu rumah kopling dengan cleaner",
+                "Oleskan grease secukupnya pada alur pin guide torque cam puli belakang",
+                "Rakit kembali dan kencangkan mur puli dengan torsi spesifikasi manual"
+            ),
+            standardMeasurements = listOf(
+                "Lebar V-Belt Batas Servis" to "Minimal 18.0 mm (Standar: 19.2 mm)",
+                "Berat Roller Standar" to "15 gram / butir",
+                "Ketebalan Kampas Kopling Ganda" to "Minimal 2.0 mm"
+            ),
+            conclusionGuideline = "Evaluasi kelayakan v-belt dan roller untuk siklus pemakaian 8.000 km berikutnya."
+        )
+    )
+
+    val k3Topics = listOf(
+        K3Topic(
+            id = "k3_apd",
+            title = "Alat Pelindung Diri (APD) Standar Bengkel Otomotif",
+            category = "APD",
+            summary = "Perlengkapan keselamatan wajib perorangan siswa dan mekanik saat bekerja di lab bengkel TBSM.",
+            guidelines = listOf(
+                "Pakaian Kerja (Wearpack): Rapi, tidak berkancing longgar yang rentan terlilit putaran puli atau rantai roda.",
+                "Sepatu Safety (Safety Shoes): Wajib ujung baja dan sol karet tahan oli agar tidak licin dan terlindung dari jatuhan benda berat.",
+                "Kacamata Pelindung (Safety Glasses): Wajib saat menyikat busi, menggerinda, menyemprot part cleaner, atau meniup kotoran.",
+                "Sarung Tangan Nitril: Melindungi kulit dari cairan kimia korosif seperti minyak rem dan asam sulfat air aki.",
+                "Masker Debu: Melindungi saluran pernapasan dari partikel debu kampas rem dan gas buang uji emisi."
+            ),
+            emergencySteps = listOf(
+                "Jika mata terkena percikan minyak rem: Segera bilas di wastafel air mengalir selama minimal 15 menit.",
+                "Laporkan setiap insiden sekecil apapun kepada guru pembimbing lab."
+            )
+        ),
+        K3Topic(
+            id = "k3_kebakaran",
+            title = "Pencegahan Kebakaran & Prosedur APAR Bengkel",
+            category = "Fire Safety",
+            summary = "Prosedur penanganan bahan bakar mudah terbakar dan pengoperasian Alat Pemadam Api Ringan (APAR).",
+            guidelines = listOf(
+                "Dilarang keras merokok atau membuat percikan api di dalam area lab bengkel.",
+                "Sediakan APAR jenis Powder atau CO2 yang masih dalam masa berlaku di dekat setiap paddock motor.",
+                "Gunakan wadah khusus tertutup saat menguras bensin atau bahan pembersih.",
+                "Lepas kabel kutub aki negatif (-) sebelum melakukan perbaikan sistem kelistrikan atau pengelasan rangka."
+            ),
+            emergencySteps = listOf(
+                "Terapkan metode PASS saat menggunakan APAR: Pull pin, Aim nozzle, Squeeze lever, Sweep side-to-side.",
+                "Evakuasi seluruh siswa melalui jalur evakuasi jika api membesar."
+            )
+        ),
+        K3Topic(
+            id = "k3_kimia",
+            title = "Keselamatan Bahan Kimia, Oli Bekas, dan Gas Buang",
+            category = "Chemical Safety",
+            summary = "Penanganan limbah B3 (Bahan Berbahaya dan Beracun) serta bahaya gas karbon monoksida (CO).",
+            guidelines = listOf(
+                "Tampung oli bekas ke dalam drum penampungan khusus limbah B3, jangan dibuang ke saluran air got.",
+                "Wajib menyambungkan selang knalpot ke sistem blower cerobong keluar saat menghidupkan mesin di dalam ruangan lab bengkel.",
+                "Gas buang mesin mengandung Karbon Monoksida (CO) tidak berbau yang sangat mematikan jika terhirup di ruang tertutup."
+            ),
+            emergencySteps = listOf(
+                "Jika merasa pusing atau mual saat tes mesin: Segera keluar ruangan ke area terbuka berudara segar."
+            )
         )
     )
 }

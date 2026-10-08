@@ -1,0 +1,73 @@
+name: Build & Release TBSM AFGO APK
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build & Publish APK
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17 (Temurin)
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: gradle
+
+      - name: Prepare Build Configuration & Env
+        run: |
+          cp .env.example .env
+          if [ -f "./gradlew" ]; then chmod +x ./gradlew; fi
+
+      - name: Build Debug APK
+        run: gradle assembleDebug --stacktrace
+
+      - name: Copy & Rename APK for Easy Download
+        run: |
+          mkdir -p build-artifacts
+          cp app/build/outputs/apk/debug/app-debug.apk build-artifacts/TBSM-AFGO-v1.0-BzOne.apk
+
+      - name: Upload Artifact (Direct Download from GitHub Actions)
+        uses: actions/upload-artifact@v4
+        with:
+          name: TBSM-AFGO-v1.0-BzOne-apk
+          path: build-artifacts/TBSM-AFGO-v1.0-BzOne.apk
+          retention-days: 30
+
+      - name: Create GitHub Release (Auto Publish APK)
+        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v1.0.0
+          name: "TBSM AFGO v1.0.0 — Digital Automotive Assistant by BzOne"
+          body: |
+            ## 🏍️ TBSM AFGO v1.0.0
+            **Digital Automotive Assistant untuk Teknik dan Bisnis Sepeda Motor SMK AFGO**
+            
+            👨‍💻 **Developer / Creator**: **BzOne (M. Akbar Rosyid)**
+            
+            ### 📦 Download File:
+            Unduh langsung file installer APK pada attachment rilis di bawah:
+            - **`TBSM-AFGO-v1.0-BzOne.apk`**
+            
+            ### 🚀 Fitur Utama:
+            - **Automotive Calculator Center**: Displacement (CC), Compression Ratio, Piston Speed, Sprocket Ratio, Hukum Ohm, dan Unit Converter.
+            - **Diagnostic Assistant**: Decision Tree troubleshooting komprehensif.
+            - **Digital Learning Center**: Modul Teori, Database Komponen Otomotif, Modul K3 & Keselamatan Bengkel, Kuis & Flashcard interaktif.
+            - **Workshop & Garage Manager**: Manajemen armada servis motor, work order, dan stok suku cadang.
+            - **AI Automotive Assistant**: Ditenagai oleh Google Gemini & Offline Knowledge Base.
+          files: build-artifacts/TBSM-AFGO-v1.0-BzOne.apk
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

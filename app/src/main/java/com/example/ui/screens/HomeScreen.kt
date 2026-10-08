@@ -10,6 +10,8 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.MenuBook
+import androidx.compose.material.icons.automirrored.filled.ReceiptLong
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -186,7 +188,7 @@ fun HomeScreen(
                         onClick = { onNavigate("MATERIAL_DETAIL", mat.id, mat.category) }
                     ) {
                         Row(verticalAlignment = Alignment.CenterVertically) {
-                            Icon(imageVector = Icons.Default.MenuBook, contentDescription = null, tint = MetallicSilver)
+                            Icon(imageVector = Icons.AutoMirrored.Filled.MenuBook, contentDescription = null, tint = MetallicSilver)
                             Spacer(modifier = Modifier.width(10.dp))
                             Column {
                                 Text(mat.title, fontWeight = FontWeight.SemiBold, color = TextWhite)
@@ -218,7 +220,7 @@ fun HomeScreen(
                     Triple("REM & SIKLUS", Icons.Default.Build, Color(0xFF5D4037)),
                     Triple("PRAKTIKUM", Icons.Default.School, MaroonDark),
                     Triple("GARASI", Icons.Default.TwoWheeler, Color(0xFF37474F)),
-                    Triple("SERVIS & WO", Icons.Default.ReceiptLong, Color(0xFF00695C)),
+                    Triple("SERVIS & WO", Icons.AutoMirrored.Filled.ReceiptLong, Color(0xFF00695C)),
                     Triple("INVENTARIS", Icons.Default.Inventory2, Color(0xFF455A64)),
                     Triple("AI ASSISTANT", Icons.Default.SmartToy, MaroonAccent)
                 )

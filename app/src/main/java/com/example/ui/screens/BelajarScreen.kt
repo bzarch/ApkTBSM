@@ -7,6 +7,7 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.MenuBook
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -18,6 +19,7 @@ import androidx.compose.ui.unit.dp
 import com.example.education.TbsmStaticDatabase
 import com.example.education.QuizQuestion
 import com.example.ui.components.GlassCard
+import com.example.ui.components.SafetyWarningBanner
 import com.example.ui.components.StatusBadge
 import com.example.ui.theme.*
 import com.example.ui.viewmodel.MainViewModel
@@ -27,12 +29,13 @@ fun BelajarScreen(
     viewModel: MainViewModel,
     onNavigate: (String, String?, String?) -> Unit
 ) {
-    var activeSubTab by remember { mutableStateOf("TEXTBOOK") } // TEXTBOOK, COMPONENTS, QUIZ, FLASHCARD, PRACTICUM, TOOLS
+    var activeSubTab by remember { mutableStateOf("TEXTBOOK") } // TEXTBOOK, COMPONENTS, PRACTICUM, QUIZ, FLASHCARD, TOOLS, K3
 
     val subTabs = listOf(
         Pair("TEXTBOOK", "Buku Digital"),
         Pair("COMPONENTS", "Komponen"),
         Pair("PRACTICUM", "Praktikum"),
+        Pair("K3", "K3 & Safety"),
         Pair("QUIZ", "Kuis & Evaluasi"),
         Pair("FLASHCARD", "Flashcard"),
         Pair("TOOLS", "Tools Bengkel")
@@ -91,7 +94,7 @@ fun BelajarScreen(
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             Text(mat.category, style = MaterialTheme.typography.labelSmall, color = MaroonLight)
-                            Icon(imageVector = Icons.Default.MenuBook, contentDescription = null, tint = MetallicSilverMuted)
+                            Icon(imageVector = Icons.AutoMirrored.Filled.MenuBook, contentDescription = null, tint = MetallicSilverMuted)
                         }
                         Spacer(modifier = Modifier.height(4.dp))
                         Text(mat.title, style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold, color = TextWhite)
@@ -133,6 +136,35 @@ fun BelajarScreen(
                         Text(mod.title, style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold, color = TextWhite)
                         Spacer(modifier = Modifier.height(6.dp))
                         Text("Tujuan: " + mod.objectives.firstOrNull(), style = MaterialTheme.typography.bodySmall, color = TextMuted)
+                    }
+                }
+            }
+
+            "K3" -> {
+                items(TbsmStaticDatabase.k3Topics) { k3 ->
+                    GlassCard(modifier = Modifier.fillMaxWidth(), borderColor = MaroonAccent.copy(alpha = 0.5f)) {
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Text(k3.title, style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold, color = TextWhite)
+                            StatusBadge(text = k3.category, statusType = "WARNING")
+                        }
+                        Spacer(modifier = Modifier.height(6.dp))
+                        Text(k3.summary, style = MaterialTheme.typography.bodySmall, color = MetallicSilver)
+
+                        Spacer(modifier = Modifier.height(10.dp))
+                        Text("Pedoman Keselamatan Kerja:", fontWeight = FontWeight.SemiBold, color = MaroonLight)
+                        k3.guidelines.forEach { g ->
+                            Text("• $g", style = MaterialTheme.typography.bodySmall, color = TextWhite)
+                            Spacer(modifier = Modifier.height(2.dp))
+                        }
+
+                        if (k3.emergencySteps.isNotEmpty()) {
+                            Spacer(modifier = Modifier.height(10.dp))
+                            SafetyWarningBanner(warningText = k3.emergencySteps.joinToString("\n"))
+                        }
                     }
                 }
             }

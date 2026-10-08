@@ -6,6 +6,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -196,7 +197,7 @@ fun DiagnosisScreen(
                                 activeStepId = prev
                             }
                         ) {
-                            Icon(imageVector = Icons.Default.ArrowBack, contentDescription = null, tint = MetallicSilverMuted)
+                            Icon(imageVector = Icons.AutoMirrored.Filled.ArrowBack, contentDescription = null, tint = MetallicSilverMuted)
                             Spacer(modifier = Modifier.width(4.dp))
                             Text("Kembali ke Pertanyaan Sebelumnya", color = MetallicSilverMuted)
                         }

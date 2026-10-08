@@ -12,6 +12,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
@@ -168,7 +169,7 @@ fun SettingsScreen(
                             Icon(imageVector = Icons.Default.Delete, contentDescription = "Delete", tint = StatusError.copy(alpha = 0.7f))
                         }
                     }
-                    Divider(color = SurfaceBorder.copy(alpha = 0.5f))
+                    HorizontalDivider(color = SurfaceBorder.copy(alpha = 0.5f))
                 }
             }
         }
@@ -179,6 +180,7 @@ fun SettingsScreen(
                 Text("Tentang TBSM AFGO", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold, color = TextWhite)
                 Spacer(modifier = Modifier.height(4.dp))
                 Text("Versi: 1.0.0 (Build Produksi Rilis)", style = MaterialTheme.typography.bodySmall, color = MaroonLight)
+                Text("Pengembang (Developer): BzOne (M. Akbar Rosyid)", style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.SemiBold, color = Color(0xFFFF8A80))
                 Text("Sekolah: SMK AFGO", style = MaterialTheme.typography.bodySmall, color = TextWhite)
                 Text("Kompetensi Keahlian: Teknik & Bisnis Sepeda Motor", style = MaterialTheme.typography.bodySmall, color = MetallicSilver)
                 Spacer(modifier = Modifier.height(8.dp))

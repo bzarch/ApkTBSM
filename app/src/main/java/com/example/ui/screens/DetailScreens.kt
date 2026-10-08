@@ -235,7 +235,7 @@ fun PracticumDetailScreen(
                             Text(item, style = MaterialTheme.typography.bodySmall, color = MetallicSilver)
                             Text(std, style = MaterialTheme.typography.bodySmall, fontWeight = FontWeight.Bold, color = MaroonLight)
                         }
-                        Divider(color = SurfaceBorder, modifier = Modifier.padding(vertical = 4.dp))
+                        HorizontalDivider(color = SurfaceBorder, modifier = Modifier.padding(vertical = 4.dp))
                     }
                 }
             }

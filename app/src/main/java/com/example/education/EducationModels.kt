@@ -67,3 +67,12 @@ data class FlashcardItem(
     val frontQuestion: String,
     val backAnswer: String
 )
+
+data class K3Topic(
+    val id: String,
+    val title: String,
+    val category: String, // APD, Fire Safety, Chemical, Workshop Housekeeping
+    val summary: String,
+    val guidelines: List<String>,
+    val emergencySteps: List<String>
+)

@@ -222,7 +222,7 @@ fun GarageScreen(
                             Text("Total Biaya Sparepart:", color = MetallicSilver)
                             Text("Rp ${String.format("%,.0f", totalPartsCost)}", fontWeight = FontWeight.Bold, color = StatusWarning)
                         }
-                        Divider(modifier = Modifier.padding(vertical = 8.dp), color = SurfaceBorder)
+                        HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp), color = SurfaceBorder)
                         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
                             Text("Estimasi Keuntungan Bersih:", fontWeight = FontWeight.Bold, color = TextWhite)
                             Text("Rp ${String.format("%,.0f", estimatedProfit)}", fontWeight = FontWeight.Bold, color = Color(0xFF4CAF50))
