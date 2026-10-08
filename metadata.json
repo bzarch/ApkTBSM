@@ -1,0 +1,6 @@
+{
+  "name": "TBSM AFGO",
+  "description": "Digital Automotive Assistant untuk Teknik dan Bisnis Sepeda Motor SMK AFGO - Kalkulator otomotif, diagnosis, database komponen, materi, servis, manajemen bengkel, dan AI asisten.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
